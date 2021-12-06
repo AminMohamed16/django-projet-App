@@ -1,0 +1,77 @@
+{% extends 'main.html'%} 
+
+{% block contenu %}
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Client:</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Modifier le Client</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Supprimer le Client</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Informations</h5>
+			<hr>
+			<p>Nom:{{Client.nom}} </p>
+			<p>Telephone:{{Client.telephon}} </p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total des Commandes</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{commande_total}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+		<button class="btn btn-primary" type="submit">Search</button>
+		</form>
+		</div>
+	</div>
+
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Produit</th>
+					<th>Date de Commande</th>
+					<th>Status</th>
+					<th>Mise à Jour</th>
+					<th>Supprimer</th>
+				</tr>
+				{% for Commande in Commande %}
+        <tr>
+        <th>{{Commande.produit}}</th>
+        <th>{{Commande.client}}</th>
+        {% comment %} <th>{{Commande.dete_creation}}</th> {% endcomment %}
+        <th>{{Commande.status}}</th>
+        <th><a href="">Mise à Jour </a></th>
+        <th><a href="">Supprimer</a></th>
+        </tr>
+        {% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
